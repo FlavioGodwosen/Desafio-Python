@@ -13,7 +13,7 @@ while len(numeros_mega_sena) < 6:
         # Adiciona o número à lista
         numeros_mega_sena.append(numero_aleatorio)
 
-# Ordena a lista em ordem crescente (opcional)
+# Ordena a lista em ordem crescente 
 numeros_mega_sena.sort()
 
 # Exibe a lista de números gerados
