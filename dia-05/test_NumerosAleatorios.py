@@ -1,3 +1,4 @@
+import random
 import unittest
 
 def gerar_numeros_mega_sena():
