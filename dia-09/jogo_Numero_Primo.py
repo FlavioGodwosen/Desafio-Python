@@ -1,33 +1,37 @@
 import random
 
-# Função para verificar se um número é primo
-def is_prime(num):
-    if num < 2:
-        return False
-    for i in range(2, int(num**0.5) + 1):
-        if num % i == 0:
+class Jogo:
+    def __init__(self):
+        self.pontuacao = 0
+
+    def is_prime(self, num):
+        if num < 2:
             return False
-    return True
+        for i in range(2, int(num**0.5) + 1):
+            if num % i == 0:
+                return False
+        return True
 
-# Função para jogar
-def play_game():
-    random_number = random.randint(1, 100)
-    player_guess = int(input(f"É o número {random_number} primo? (Digite 1 para Sim, 2 para Não): "))
+    def play_game(self):
+        random_number = random.randint(1, 100)
+        player_guess = input(f"É o número {random_number} primo? (Digite 1 para Sim, 2 para Não): ")
 
-    if (player_guess == 1 and is_prime(random_number)) or (player_guess == 2 and not is_prime(random_number)):
-        print("Resposta correta! +1 ponto\n")
-        return 1
-    else:
-        print(f"Resposta incorreta. O número {random_number} {'é' if is_prime(random_number) else 'não é'} primo.\n")
-        return 0
+        if (player_guess == '1' and self.is_prime(random_number)) or (player_guess == '2' and not self.is_prime(random_number)):
+            print("Resposta correta! +1 ponto\n")
+            self.pontuacao += 1
+        else:
+            print(f"Resposta incorreta. O número {random_number} {'é' if self.is_prime(random_number) else 'não é'} primo.\n")
 
-# Função para ver pontuação
-def view_score(score):
-    print(f"Sua pontuação atual é: {score}\n")
+    def view_score(self):
+        print(f"Sua pontuação atual é: {self.pontuacao}\n")
+
+    def reset_score(self):
+        self.pontuacao = 0
+        print("Pontuação zerada.\n")
 
 # Função principal
 def main():
-    score = 0
+    jogo = Jogo()
 
     while True:
         print("Menu Inicial:")
@@ -39,12 +43,11 @@ def main():
         choice = input("Escolha uma opção: ")
 
         if choice == '1':
-            score += play_game()
+            jogo.play_game()
         elif choice == '2':
-            view_score(score)
+            jogo.view_score()
         elif choice == '3':
-            score = 0
-            print("Pontuação zerada.\n")
+            jogo.reset_score()
         elif choice == '4':
             print("Obrigado por jogar! Até logo.")
             break
