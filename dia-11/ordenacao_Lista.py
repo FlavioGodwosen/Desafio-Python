@@ -11,15 +11,15 @@ def main():
 
         # Tenta converter a entrada para um número
         try:
-            numero = float(numero_str)
+            numero = int(numero_str)
             numeros.append(numero)
         except ValueError:
             print("Por favor, insira um número válido.")
 
-    # Ordena a lista usando o método sorted()
+    # Ordena a lista
     numeros_ordenados = sorted(numeros)
 
-    # Mostra a lista ordenada
+    # lista ordenada
     print("Lista de números ordenada:", numeros_ordenados)
 
 if __name__ == "__main__":
